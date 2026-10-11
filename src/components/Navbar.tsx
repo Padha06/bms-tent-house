@@ -23,7 +23,7 @@ export default function Navbar() {
       initial={{ y: -90, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
-      className="fixed inset-x-0 top-0 z-50"
+      className="fixed inset-x-0 top-0 z-50 hidden lg:block"
     >
       {/* scroll progress */}
       <motion.div

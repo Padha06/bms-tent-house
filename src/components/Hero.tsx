@@ -48,8 +48,23 @@ function MobileHero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/40" />
       </div>
 
+      {/* brand mark — the top header is hidden on mobile */}
+      <div className="absolute inset-x-0 top-0 z-10 flex items-center gap-2.5 px-5 pt-6">
+        <span className="grid h-9 w-9 place-items-center rounded-xl border border-gold/40 bg-black/25 backdrop-blur">
+          <svg viewBox="0 0 64 64" className="h-4 w-4" aria-hidden>
+            <g fill="none" stroke="#E7CE8B" strokeLinejoin="round" strokeLinecap="round">
+              <path d="M32 10 54 46H10L32 10Z" strokeWidth="4" />
+              <path d="M32 10v36" strokeWidth="2.6" />
+            </g>
+          </svg>
+        </span>
+        <span className="font-display text-base font-semibold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
+          BMS <span className="text-gold-light">Tent House</span>
+        </span>
+      </div>
+
       {/* content over the images */}
-      <div className="relative z-10 px-5 pb-32 pt-28">
+      <div className="relative z-10 px-5 pb-28 pt-16">
         <motion.span
           key={SLIDES[i].label}
           initial={{ opacity: 0, y: 10 }}
