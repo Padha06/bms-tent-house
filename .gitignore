@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# logs
+*.log
+dev.log
+_preview.*
+
+# env
+.env
+.env.*
+
+# vercel
+.vercel
+
+# editor / os
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# playwright / screenshot artifacts
+_shot*.mjs
+_diag*.mjs
+_shot*.png
