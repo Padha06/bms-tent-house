@@ -26,3 +26,5 @@ Thumbs.db
 _shot*.mjs
 _diag*.mjs
 _shot*.png
+
+.vercel
