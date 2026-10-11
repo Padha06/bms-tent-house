@@ -1,12 +1,117 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Phone, Star, Truck, ShieldCheck, ArrowRight } from "lucide-react";
 import Particles from "./Particles";
-import { GoldButton, GhostButton } from "./ui";
+import { GoldButton } from "./ui";
 import { BUSINESS, TEL_HREF, waLink } from "../lib/whatsapp";
 import { EASE } from "../lib/motion";
 import { WhatsAppIcon } from "./icons";
 
+/* ============================ MOBILE ============================ */
+const SLIDES = [
+  { src: "/images/hero.webp", label: "Weddings" },
+  { src: "/images/gallery-01.webp", label: "Receptions" },
+  { src: "/images/gallery-03.webp", label: "Festive Stages" },
+  { src: "/images/gallery-05.webp", label: "Cocktail Evenings" },
+  { src: "/images/gallery-08.webp", label: "Ceremonies" },
+];
+
+function MobileHero() {
+  const [i, setI] = useState(0);
+  const next = () => setI((v) => (v + 1) % SLIDES.length);
+
+  useEffect(() => {
+    const t = window.setInterval(next, 5200);
+    return () => window.clearInterval(t);
+  }, []);
+
+  return (
+    <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden lg:hidden">
+      {/* image carousel */}
+      <div className="absolute inset-0" onClick={next} role="presentation">
+        <AnimatePresence initial={false}>
+          <motion.img
+            key={SLIDES[i].src}
+            src={SLIDES[i].src}
+            alt={`BMS Tent House ${SLIDES[i].label} setup in Bangalore`}
+            initial={{ opacity: 0, scale: 1.09 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 0.9, ease: EASE },
+              scale: { duration: 6, ease: "linear" },
+            }}
+            className="absolute inset-0 h-full w-full object-cover"
+            draggable={false}
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/40" />
+      </div>
+
+      {/* content over the images */}
+      <div className="relative z-10 px-5 pb-32 pt-28">
+        <motion.span
+          key={SLIDES[i].label}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: EASE }}
+          className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-gold-light backdrop-blur"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+          {SLIDES[i].label}
+        </motion.span>
+
+        <h1 className="mt-5 font-display text-[clamp(2.4rem,11vw,3.4rem)] font-semibold leading-[1.0] tracking-tight text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
+          Elevate Every
+          <br />
+          <span className="italic text-gold-light">Occasion</span>
+        </h1>
+
+        <p className="mt-4 max-w-[22rem] text-[0.95rem] leading-relaxed text-white/85">
+          Premium tents, canopies &amp; chairs — delivered, set up &amp; styled
+          across Bangalore.
+        </p>
+
+        <div className="mt-6 flex flex-col gap-3">
+          <GoldButton
+            href={waLink()}
+            external
+            className="w-full"
+            icon={<ArrowRight className="h-4 w-4" />}
+          >
+            Get Instant Quote
+          </GoldButton>
+          <motion.a
+            href={TEL_HREF}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-white backdrop-blur"
+          >
+            <Phone className="h-4 w-4" />
+            Call {BUSINESS.phoneDisplay}
+          </motion.a>
+        </div>
+
+        {/* slide dots */}
+        <div className="mt-6 flex items-center gap-2">
+          {SLIDES.map((s, idx) => (
+            <button
+              key={s.src}
+              type="button"
+              aria-label={`Show ${s.label}`}
+              aria-current={idx === i}
+              onClick={() => setI(idx)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                idx === i ? "w-7 bg-gold" : "w-1.5 bg-white/40"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================ DESKTOP ============================ */
 function MaskLine({
   children,
   delay = 0,
@@ -54,7 +159,7 @@ function Float({
   );
 }
 
-export default function Hero() {
+function DesktopHero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -66,9 +171,8 @@ export default function Hero() {
 
   return (
     <section
-      id="home"
       ref={ref}
-      className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-32 lg:pt-32 lg:pb-20"
+      className="relative hidden min-h-[100svh] items-center overflow-hidden pt-28 pb-32 lg:flex lg:pt-32 lg:pb-20"
     >
       {/* ---- background layers ---- */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(120%_90%_at_50%_-10%,#ffffff_0%,#f7f4ec_45%,#efe8d9_100%)]" />
@@ -120,7 +224,6 @@ export default function Hero() {
               transition={{ duration: 0.9, ease: EASE, delay: 0.6 }}
               className="mt-7 max-w-xl text-base leading-relaxed text-cream-dim sm:text-lg"
             >
-              {/* Premium tents, canopies & chairs — delivered, */}
               Premium tents, canopies &amp; chairs — delivered, set up and styled
               across Bangalore for weddings, corporate events &amp; celebrations.
             </motion.p>
@@ -138,12 +241,13 @@ export default function Hero() {
               >
                 Get Instant Quote
               </GoldButton>
-              <GhostButton
+              <a
                 href={TEL_HREF}
-                icon={<Phone className="h-4 w-4" />}
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-black/12 bg-black/[0.035] px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-cream backdrop-blur transition-colors hover:border-gold/60 hover:text-gold-soft"
               >
+                <Phone className="h-4 w-4" />
                 Call {BUSINESS.phoneDisplay}
-              </GhostButton>
+              </a>
             </motion.div>
 
             {/* trust row */}
@@ -205,11 +309,7 @@ export default function Hero() {
             </Float>
 
             {/* floating chips */}
-            <Float
-              duration={6}
-              delay={0.4}
-              className="absolute -left-3 top-10 sm:-left-6"
-            >
+            <Float duration={6} delay={0.4} className="absolute -left-3 top-10 sm:-left-6">
               <div className="glass-dark flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl">
                 <span className="grid h-9 w-9 place-items-center rounded-xl bg-gold/15 text-gold">
                   <Star className="h-4 w-4 fill-gold" />
@@ -221,11 +321,7 @@ export default function Hero() {
               </div>
             </Float>
 
-            <Float
-              duration={6.6}
-              delay={1.1}
-              className="absolute -right-2 bottom-16 sm:-right-6"
-            >
+            <Float duration={6.6} delay={1.1} className="absolute -right-2 bottom-16 sm:-right-6">
               <div className="glass-dark flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl">
                 <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#25D366]/15 text-[#1faa52]">
                   <WhatsAppIcon className="h-4 w-4" />
@@ -237,12 +333,7 @@ export default function Hero() {
               </div>
             </Float>
 
-            <Float
-              duration={5.4}
-              delay={0.8}
-              amp={9}
-              className="absolute right-4 top-3 sm:right-2"
-            >
+            <Float duration={5.4} delay={0.8} amp={9} className="absolute right-4 top-3 sm:right-2">
               <div className="glass-dark rounded-2xl px-3.5 py-2 shadow-xl">
                 <span className="text-xs font-semibold text-cream">
                   4.9 <span className="text-gold">★</span> · 500+ events
@@ -260,7 +351,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-28 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 lg:bottom-8 lg:flex"
+        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 lg:flex"
       >
         <span className="text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-cream-dim/70">
           Scroll
@@ -274,5 +365,14 @@ export default function Hero() {
         </span>
       </motion.a>
     </section>
+  );
+}
+
+export default function Hero() {
+  return (
+    <div id="home" className="scroll-mt-24">
+      <MobileHero />
+      <DesktopHero />
+    </div>
   );
 }

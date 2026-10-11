@@ -36,7 +36,7 @@ export default function Navbar() {
           className={`mt-3 flex items-center justify-between gap-3 rounded-2xl px-3.5 py-2.5 transition-all duration-500 sm:px-5 sm:py-3 ${
             scrolled
               ? "glass-dark shadow-[0_18px_50px_-24px_rgba(60,50,25,0.35)]"
-              : "border border-transparent bg-transparent"
+              : "border border-transparent bg-transparent max-lg:border-black/8 max-lg:bg-white/90 max-lg:backdrop-blur-md max-lg:shadow-[0_10px_30px_-20px_rgba(60,50,25,0.35)]"
           }`}
         >
           <Logo />
