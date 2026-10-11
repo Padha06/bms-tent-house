@@ -47,7 +47,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative scroll-mt-24 py-24 sm:py-32">
-      <div className="aura left-1/2 top-0 h-[40vw] w-[40vw] max-h-[520px] max-w-[520px] -translate-x-1/2 bg-gold/12" />
+      <div className="aura left-1/2 top-0 h-[40vw] w-[40vw] max-h-[520px] max-w-[520px] -translate-x-1/2 text-gold/16" />
 
       <div className="container-x relative">
         <SectionHeading

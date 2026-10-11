@@ -37,7 +37,7 @@ export default function WhyUs() {
   return (
     <section id="why" className="relative scroll-mt-24 py-24 sm:py-32">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#f6f3ea,#fbf9f3_50%,#f6f3ea)]" />
-      <div className="aura right-[-8%] top-[10%] h-[36vw] w-[36vw] max-h-[460px] max-w-[460px] bg-[#16294b]/12" />
+      <div className="aura right-[-8%] top-[10%] h-[36vw] w-[36vw] max-h-[460px] max-w-[460px] text-[#16294b]/16" />
 
       <div className="container-x relative">
         <SectionHeading

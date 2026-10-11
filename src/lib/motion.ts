@@ -11,11 +11,10 @@ export const spring: Transition = {
 };
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 34, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 34 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: 0.85, ease: EASE },
   },
 };
@@ -36,11 +35,10 @@ export const scaleIn: Variants = {
 };
 
 export const blurUp: Variants = {
-  hidden: { opacity: 0, y: 60, filter: "blur(14px)" },
+  hidden: { opacity: 0, y: 60 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: 1, ease: EASE },
   },
 };

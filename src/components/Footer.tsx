@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer className="relative border-t border-black/8 bg-[#efe9dc] pt-16 pb-28 lg:pb-10">
-      <div className="aura left-[10%] top-0 h-[26vw] w-[26vw] max-h-[320px] max-w-[320px] bg-gold/12" />
+      <div className="aura left-[10%] top-0 h-[26vw] w-[26vw] max-h-[320px] max-w-[320px] text-gold/16" />
 
       <div className="container-x relative">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">

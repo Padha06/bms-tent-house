@@ -49,7 +49,6 @@ export default function Particles({
             width: d.size,
             height: d.size,
             background: d.gold ? "#c9a84c" : "#b9932f",
-            boxShadow: "0 0 10px 1px rgba(166,124,36,0.35)",
           }}
           initial={{ opacity: 0, y: 0 }}
           animate={{

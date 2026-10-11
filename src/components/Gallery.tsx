@@ -80,8 +80,8 @@ function GalleryTile({ tile, index }: { tile: Tile; index: number }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${tile.title} — enquire on WhatsApp`}
-      initial={{ opacity: 0, y: 46, filter: "blur(10px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={{ opacity: 0, y: 46 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.85, ease: EASE, delay: (index % 3) * 0.08 }}
       className="group mb-5 block break-inside-avoid"

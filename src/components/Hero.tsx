@@ -45,7 +45,7 @@ function Float({
 }) {
   return (
     <motion.div
-      className={className}
+      className={`will-change-transform ${className}`}
       animate={{ y: [0, -amp, 0] }}
       transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
     >
@@ -72,9 +72,9 @@ export default function Hero() {
     >
       {/* ---- background layers ---- */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(120%_90%_at_50%_-10%,#ffffff_0%,#f7f4ec_45%,#efe8d9_100%)]" />
-      <div className="aura left-[-10%] top-[8%] h-[42vw] w-[42vw] max-h-[560px] max-w-[560px] animate-aurora bg-gold/30" />
-      <div className="aura right-[-8%] top-[30%] h-[38vw] w-[38vw] max-h-[520px] max-w-[520px] animate-aurora bg-[#c41e3a]/10 [animation-delay:3s]" />
-      <div className="aura bottom-[-12%] left-[30%] h-[30vw] w-[30vw] max-h-[420px] max-w-[420px] animate-aurora bg-[#16294b]/12 [animation-delay:6s]" />
+      <div className="aura left-[-10%] top-[8%] h-[42vw] w-[42vw] max-h-[560px] max-w-[560px] text-gold/30" />
+      <div className="aura right-[-8%] top-[30%] h-[38vw] w-[38vw] max-h-[520px] max-w-[520px] text-[#c41e3a]/14" />
+      <div className="aura bottom-[-12%] left-[30%] h-[30vw] w-[30vw] max-h-[420px] max-w-[420px] text-[#16294b]/16" />
       <div
         className="absolute inset-0 -z-10 opacity-[0.05]"
         style={{
@@ -85,7 +85,7 @@ export default function Hero() {
           WebkitMaskImage: "radial-gradient(70% 60% at 50% 40%, #000 30%, transparent 100%)",
         }}
       />
-      <Particles count={18} seed={11} />
+      <Particles count={12} seed={11} />
 
       {/* ---- content ---- */}
       <div className="container-x relative z-10">
@@ -186,7 +186,7 @@ export default function Hero() {
                 className="h-[93%] w-[93%] rounded-full border border-dashed border-gold/25"
               />
             </div>
-            <div className="aura left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 bg-gold/25" />
+            <div className="aura left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 text-gold/25" />
 
             <Float duration={7.5} amp={14}>
               <div className="glass relative overflow-hidden rounded-[2rem] p-2.5 shadow-[0_40px_90px_-40px_rgba(80,66,32,0.5)] sm:p-3">

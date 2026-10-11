@@ -180,7 +180,7 @@ function ProductCard({ product }: { product: Product }) {
 export default function Products() {
   return (
     <section id="products" className="relative scroll-mt-24 py-24 sm:py-32">
-      <div className="aura left-[-6%] top-[20%] h-[34vw] w-[34vw] max-h-[440px] max-w-[440px] bg-gold/12" />
+      <div className="aura left-[-6%] top-[20%] h-[34vw] w-[34vw] max-h-[440px] max-w-[440px] text-gold/16" />
 
       <div className="container-x relative">
         <SectionHeading
